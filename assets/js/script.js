@@ -1,6 +1,8 @@
 
 const btnStart          = document.getElementById('start');
 const btnReset          = document.getElementById('reset');
+let TIME_TO_WAIT        = 5;
+const TOTAL_NUMBERS     = 5;
 ///////////////////////////////////////////////////////////////////////////
 let givenRandomNumbers  = [];
 let userDigitedNumbers  = [];
@@ -8,16 +10,16 @@ let correctAnwers       = [];
 ///////////////////////////////////////////////////////////////////////////
 btnStart.addEventListener('click', function() {
 
-    while (givenRandomNumbers.length < 5) {
+    while (givenRandomNumbers.length < TOTAL_NUMBERS) {
 
-        let randomNumber = Math.floor(Math.random() * (50 - 1 + 1) + 1);
-    
-            console.log('numeri random -->', randomNumber);
-    
+        const randomNumber = Math.floor(Math.random() * (100 - 1 + 1) + 1);
+        
         if (!givenRandomNumbers.includes(randomNumber)) {
             
             givenRandomNumbers.push(randomNumber);
-    
+            
+                console.log('numeri random -->', givenRandomNumbers);
+
             document.getElementById('output').innerHTML = `
             Osserva attentamente e memorizza i seguenti numeri: <br>
             <i class="fa-solid fa-hourglass-start fa-spin"></i> <br>
@@ -25,16 +27,14 @@ btnStart.addEventListener('click', function() {
             `
         }
     }
-    
-    
+///////////////////////////////////////////////////////////////////////////
     setTimeout(function() {
         document.getElementById('output').innerHTML = '';
     }, 5000);
-    
-    
+///////////////////////////////////////////////////////////////////////////
     setTimeout(function() {
         
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < TOTAL_NUMBERS; i++) {
             
             let digitNumbers = prompt('Inserisci i numeri che hai appena visualizzato');
     
