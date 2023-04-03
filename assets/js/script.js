@@ -49,11 +49,22 @@ btnStart.addEventListener('click', function() {
             }
         }
     
-        document.getElementById('output').innerHTML = `
-        Ecco il tuo risultato: <br>
-        <i class="fa-solid fa-down-long fa-bounce"></i> <br>
-        Hai indovinato ${correctAnwers.length} numeri: ${correctAnwers}!
-        `
+        if (correctAnwers.length === 0) {
+            document.getElementById('output').innerHTML = `
+            Ecco il tuo risultato: <br>
+            <i class="fa-solid fa-down-long fa-bounce"></i> <br>
+            Hai indovinato ${correctAnwers.length} numeri su ${TOTAL_NUMBERS} <br>
+            Riprova!
+            `
+        } else {
+            document.getElementById('output').innerHTML = `
+            Ecco il tuo risultato: <br>
+            <i class="fa-solid fa-down-long fa-bounce"></i> <br>
+            Hai indovinato ${correctAnwers.length} numeri su ${TOTAL_NUMBERS} <br>
+            ${correctAnwers}
+            `
+        }
+        
     }, 5100);
 })
 ///////////////////////////////////////////////////////////////////////////
